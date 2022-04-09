@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { memo, Suspense } from 'react'
+import  { renderRoutes } from 'react-router-config'
 
-function App() {
+import routes from './router'
+
+import HYAppHeader from './components/app-header'
+import HYAppFooter from './components/app-footer'
+import HYAppPlayerBar from './pages/player/app-player-bar'
+
+const App = memo(() => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <HYAppHeader />
+      <Suspense fallback={<div>loading...</div>}>
+        {renderRoutes(routes)}
+      </Suspense>
+      <HYAppFooter />
+      <HYAppPlayerBar />
     </div>
-  );
-}
+  )
+})
 
-export default App;
+export default App

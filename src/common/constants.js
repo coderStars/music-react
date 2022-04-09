@@ -1,0 +1,1 @@
+export const HOT_REACOMMEND_LIMIT = 12;
